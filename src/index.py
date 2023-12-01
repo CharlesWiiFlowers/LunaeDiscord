@@ -19,7 +19,7 @@ async def on_ready():
     print(f'We have logged in as {bot.user} \n*****Hello World*****')
 
 
-for file in os.listdir("./commands"):
+for file in os.listdir("./src/commands"):
     if file.endswith(".py"):
         bot.load_extension(f"commands.{file[:-3]}")
 
