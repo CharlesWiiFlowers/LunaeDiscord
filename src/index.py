@@ -18,5 +18,9 @@ async def on_ready():
     await bot.change_presence(status=nextcord.Status.do_not_disturb, activity=activity)
     print(f'We have logged in as {bot.user} \n*****Hello World*****')
 
-bot.load_extension('commands.Slash')
+
+for file in os.listdir("./commands"):
+    if file.endswith(".py"):
+        bot.load_extension(f"commands.{file[:-3]}")
+
 bot.run(TOKEN)
