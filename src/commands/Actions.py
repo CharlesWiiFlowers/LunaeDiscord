@@ -62,12 +62,21 @@ class Actions(commands.Cog):
 
         await interaction.response.send_message(embed=embed)
 
-    @nextcord.slash_command(guild_ids=GUILD,description='Mira fijamente a alguien')
+    @nextcord.slash_command(guild_ids=GUILD,description='Acaricia a alguie ')
     async def nuzzle(self, interaction: nextcord.Interaction, member: nextcord.Member):
 
         user, user1 = apodo(interaction=interaction, member=member)
         embed = nextcord.Embed(description=f'**{user}** acaricia suavemente **{user1}** {asciiEmoji()}', color=interaction.user.colour)
         embed.set_image(url=getReaction('nuzzle'))
+
+        await interaction.response.send_message(embed=embed)
+
+    @nextcord.slash_command(description='Mira fijamente a alguien')
+    async def stare(self, interaction: nextcord.Interaction, member: nextcord.Member):
+
+        user, user1 = apodo(interaction=interaction, member=member)
+        embed = nextcord.Embed(description=f'**{user}** mira fijamente a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
+        embed.set_image(url=getReaction('stare'))
 
         await interaction.response.send_message(embed=embed)
 
