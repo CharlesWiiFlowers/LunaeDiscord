@@ -4,7 +4,7 @@ import json
 import random
 from nextcord.ext import commands
 
-GUILD = 1053810487982297234
+GUILD = [1053810487982297234,804412974709604373]
 
 def apodo(interaction, member):
     if interaction.user.nick is None:
@@ -30,13 +30,11 @@ def asciiEmoji():
         case 3:
             return "nya∼"
 
-
-
 class Actions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(description='Dale un beso a alguien')
+    @nextcord.slash_command(guild_ids=GUILD,description='Dale un beso a alguien')
     async def kiss(self, interaction: nextcord.Interaction, member: nextcord.Member):
 
         user, user1 = apodo(interaction=interaction, member=member)
