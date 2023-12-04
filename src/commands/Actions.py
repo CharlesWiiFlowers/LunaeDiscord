@@ -18,7 +18,7 @@ def apodo(interaction, member):
     return (name, name1)
 
 def asciiEmoji():
-    num = random.randint(0,3)
+    num = random.randint(0,5)
 
     match num:
         case 0:
@@ -29,26 +29,45 @@ def asciiEmoji():
             return "OwO"
         case 3:
             return "nya∼"
+        case 4:
+            return ":'3"
+        case 5:
+            return "<3"
+        
+def getReaction(react):
+    resp = requests.get(f'https://api.otakugifs.xyz/gif?reaction={react}')
+    data = json.loads(resp.text)
+
+    return data["url"]
 
 class Actions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(guild_ids=GUILD,description='Dale un beso a alguien')
+    @nextcord.slash_command(description='Dale un beso a alguien')
     async def kiss(self, interaction: nextcord.Interaction, member: nextcord.Member):
 
         user, user1 = apodo(interaction=interaction, member=member)
-
-        resp = requests.get('https://api.otakugifs.xyz/gif?reaction=kiss')
+        embed = nextcord.Embed(description=f'**{user}** le dio un beso a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
+        embed.set_image(url=getReaction('kiss'))
         
-        data = json.loads(resp.text)
+        await interaction.response.send_message(embed=embed)
 
-        if member is None:
-            member = interaction.user
+    @nextcord.slash_command(guild_ids=GUILD,description='Dale un abacho a alguien :3')
+    async def hug(self, interaction: nextcord.Interaction, member: nextcord.Member):
 
-        embed = nextcord.Embed(description=f'**{user}** le dio un beso a **{user1}** {asciiEmoji()}',
-                               color=interaction.user.colour)
-        embed.set_image(url=data["url"])
+        user, user1 = apodo(interaction=interaction, member=member)
+        embed = nextcord.Embed(description=f'**{user}** le dio un abachito a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
+        embed.set_image(url=getReaction('hug'))
+
+        await interaction.response.send_message(embed=embed)
+
+    @nextcord.slash_command(guild_ids=GUILD,description='Mira fijamente a alguien')
+    async def nuzzle(self, interaction: nextcord.Interaction, member: nextcord.Member):
+
+        user, user1 = apodo(interaction=interaction, member=member)
+        embed = nextcord.Embed(description=f'**{user}** acaricia suavemente **{user1}** {asciiEmoji()}', color=interaction.user.colour)
+        embed.set_image(url=getReaction('nuzzle'))
 
         await interaction.response.send_message(embed=embed)
 
