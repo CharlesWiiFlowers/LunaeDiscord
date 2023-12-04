@@ -62,7 +62,7 @@ class Actions(commands.Cog):
 
         await interaction.response.send_message(embed=embed)
 
-    @nextcord.slash_command(guild_ids=GUILD,description='Acaricia a alguie ')
+    @nextcord.slash_command(guild_ids=GUILD,description='Acaricia a alguien ')
     async def nuzzle(self, interaction: nextcord.Interaction, member: nextcord.Member):
 
         user, user1 = apodo(interaction=interaction, member=member)
