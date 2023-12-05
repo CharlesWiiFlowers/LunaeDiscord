@@ -30,7 +30,7 @@ class Slash(commands.Cog):
     @nextcord.slash_command(description='Mando un mensaje por ti')
     async def message(self, interaction: nextcord.Interaction, mensaje: str):
         embed = nextcord.Embed(description=mensaje, color=interaction.user.colour)
-        embed.set_author(f'{interaction.user.name} y {self.bot.user}')
+        embed.set_footer(text=f'{interaction.user.name} y {self.bot.user.name}')
         await interaction.send(embed=embed)
 
 def setup(bot):
