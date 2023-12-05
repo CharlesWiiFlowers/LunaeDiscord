@@ -21,7 +21,7 @@ class Slash(commands.Cog):
         if member is None:
             member = interaction.user
 
-        embed = nextcord.Embed(title=f'Avatar de {member.name}')
+        embed = nextcord.Embed(title=f'Avatar de {member.name}', color=interaction.user.colour)
         embed.set_footer(text=f'Usuario: {member.id}')
         embed.set_image(url=member.avatar.with_format("png").with_size(1024).url)
 

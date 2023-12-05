@@ -14,8 +14,8 @@ TOKEN = os.getenv('TOKEN')
 @bot.event
 async def on_ready():
 
-    activity = nextcord.Activity(type=nextcord.ActivityType.listening, name="It's be so long")
-    await bot.change_presence(status=nextcord.Status.do_not_disturb, activity=activity)
+    activity = nextcord.Activity(type=nextcord.ActivityType.watching, name="Especial Navideño!! 🎄")
+    await bot.change_presence(status=nextcord.Status.online, activity=activity)
     print(f'We have logged in as {bot.user} \n*****Hello World*****')
 
 
