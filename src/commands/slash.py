@@ -26,6 +26,12 @@ class Slash(commands.Cog):
         embed.set_image(url=member.avatar.with_format("png").with_size(1024).url)
 
         await interaction.response.send_message(embed=embed)
- 
+
+    @nextcord.slash_command(description='Mando un mensaje por ti')
+    async def message(self, interaction: nextcord.Interaction, mensaje: str):
+        embed = nextcord.Embed(description=mensaje, color=interaction.user.colour)
+        embed.set_author(f'{interaction.user.name} y {self.bot.user}')
+        await interaction.send(embed=embed)
+
 def setup(bot):
     bot.add_cog(Slash(bot))
