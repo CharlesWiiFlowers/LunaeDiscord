@@ -2,9 +2,10 @@ import nextcord
 import requests
 import json
 import random
+import getThings as gt
 from nextcord.ext import commands
 
-GUILD = [1053810487982297234,804412974709604373]
+GUILD = gt.guild()
 
 def apodo(interaction, member):
     if interaction.user.nick is None:

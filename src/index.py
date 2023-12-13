@@ -1,15 +1,14 @@
 import nextcord
 import os
+import getThings as gt
 from nextcord.ext import commands
-from dotenv import load_dotenv
 
-load_dotenv()
 intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(intents=intents, command_prefix='?')
 
-TESTING_GUILD_ID = 1053810487982297234
-TOKEN = os.getenv('TOKEN')
+TESTING_GUILD_ID = gt.guild()
+TOKEN = gt.Token()
 
 @bot.event
 async def on_ready():
@@ -22,5 +21,9 @@ async def on_ready():
 for file in os.listdir("./src/commands"):
     if file.endswith(".py"):
         bot.load_extension(f"commands.{file[:-3]}")
+
+for file in os.listdir("./src/messages"):
+    if file.endswith(".py"):
+        bot.load_extension(f"messages.{file[:-3]}")
 
 bot.run(TOKEN)

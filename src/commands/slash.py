@@ -1,7 +1,8 @@
 import nextcord
+import getThings as gt
 from nextcord.ext import commands
 
-GUILD = 1053810487982297234
+GUILD = gt.guild()
     
 class Slash(commands.Cog):
     def __init__(self, bot):

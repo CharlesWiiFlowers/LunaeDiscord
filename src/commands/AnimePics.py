@@ -2,6 +2,7 @@ import nextcord
 import requests
 import json
 import random
+import getThings as gt
 from nextcord.ext import commands
 
 categories = {"waifu": "waifu", "neko": "neko", "bully": "bully",
@@ -13,7 +14,7 @@ categories = {"waifu": "waifu", "neko": "neko", "bully": "bully",
 
 categories1 = {"waifu": "waifu", "neko": "neko", "trap": "trap", "blowjob": "blowjob"}
 
-GUILD = 1053810487982297234
+GUILD = gt.guild()
 
 def getAnimePics(category, type):
     resp = requests.get(url=f'https://api.waifu.pics/{type}/{category}')
