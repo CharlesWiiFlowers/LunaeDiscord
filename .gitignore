@@ -2,3 +2,6 @@ logs/.env
 src/.env
 src/commands/__pycache__
 TODO
+*.mp3
+*.pyc
+demo.py
