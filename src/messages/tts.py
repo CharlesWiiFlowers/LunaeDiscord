@@ -21,6 +21,10 @@ class tts(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.Cog.listener(name='join')
+    async def join(ctx: commands.Context, arg):
+        await ctx.send(arg)
+
     @commands.Cog.listener("on_message")
     async def on_message(self, message: nextcord.Message):
 
