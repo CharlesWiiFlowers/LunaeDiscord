@@ -1,7 +1,13 @@
 logs/.env
 src/.env
+<<<<<<< HEAD
 src/commands/__pycache__
 TODO
 *.mp3
 *.pyc
 demo.py
+=======
+TODO
+*.mp3
+*.pyc
+>>>>>>> 1118aa42188d47b4533c8a4a61d2f874e5429779
