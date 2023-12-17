@@ -1,0 +1,31 @@
+{
+    "Actions": {
+
+    },
+
+    "Emotions": {
+        "blush": ["{NAME} se sonrojó {EH}", "{NAME} está más rojo que un tomate {EH}", "{NAME} está sonrojado {EH}"],
+        "clap": ["{NAME} está aplaudiendo!! {EH}", "Aplausos! {NAME} aplaude!!"],
+        "confused": ["{NAME} está confudido", "{NAME} no sabe lo que pasa", "{NAME}, wtf???"],
+        "cool": ["{NAME} se siente cool {EC}"],
+        "cry": ["{NAME} está llorando{EB}", "El cielo se nubla para {NAME}{EB}"],
+        "dance": ["Así se baila {NAME}!! {ET}", "{NAME} está bailando alegremente!! {ET}"],
+        "evillaugh": ["evillaugh"], 
+        "happy": ["happy"],
+        "laugh": ["laugh"], 
+        "love": ["love"], 
+        "nom": ["nom"],
+        "nyah": ["nyah"],
+        "poke": ["poke"],
+        "sad": ["sad"],
+        "scared": ["scared"],
+        "shy": ["shy"],
+        "smile": ["smile"],
+        "sorry": ["sorry"],
+        "surprised": ["surprised"],
+        "tired": ["tired"],
+        "cringe": ["cringe"],
+        "yeet": ["yeet"],
+        "smug": ["smug"]
+    }
+}
