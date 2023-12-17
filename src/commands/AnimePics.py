@@ -7,10 +7,10 @@ from nextcord.ext import commands
 
 categories = {"waifu": "waifu", "neko": "neko", "bully": "bully",
               "cuddle": "cuddle", "cry": "cry", "hug": "hug","kiss": "kiss",
-              "lick": "lick", "pat": "pat","bonk": "bonk", "smile": "smile",
+              "lick": "lick", "shinobu": "shinobu","megumin": "megumin", "smile": "smile",
               "blush": "blush", "highfive": "highfive", "handhold": "handhold", "bite": "bite",
-              "glomp": "glomp", "slap": "slap", "kill": "kill", "kick": "kick", "happy": "happy",
-              "poke": "poke", "dance": "dance", "cringe": "cringe"}
+              "smug": "smug", "awoo": "awoo", "kill": "kill", "kick": "kick", "happy": "happy",
+              "wink": "wink", "nom": "nom", "yeet": "yeet"}
 
 categories1 = {"waifu": "waifu", "neko": "neko", "trap": "trap", "blowjob": "blowjob"}
 
@@ -88,7 +88,7 @@ class AnimePics(commands.Cog):
 
         await interaction.response.send_message(embed=embed)
 
-    @nextcord.slash_command(guild_ids=[GUILD],description='Te doy una imagen según la categoría que elijas (NSFW)')
+    @nextcord.slash_command(guild_ids=[int(gt.guild())],description='Te doy una imagen según la categoría que elijas (NSFW)')
     async def animepicextra(self, interaction: nextcord.Interaction, categoria: str = nextcord.SlashOption(name='categoria', description='Escoge uno', choices=categories1, required=True)):
         embed = nextcord.Embed(color=interaction.user.colour)
         embed.set_image(url=getAnimePics(categoria, 'nsfw'))
