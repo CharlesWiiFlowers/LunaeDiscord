@@ -7,7 +7,7 @@ from nextcord.ext import commands
 
 GUILD = gt.guild()
 
-def apodo(interaction, member):
+def apodo(interaction: nextcord.Interaction, member: nextcord.Member):
     if interaction.user.nick is None:
         name = interaction.user.name
     else:
@@ -16,69 +16,65 @@ def apodo(interaction, member):
         name1 = member.name
     else:
         name1 = member.nick
-    return (name, name1)
+    return name, name1
 
-def asciiEmoji():
-    num = random.randint(0,5)
-
-    match num:
-        case 0:
-            return "7w7"
-        case 1:
-            return "UwU"
-        case 2:
-            return "OwO"
-        case 3:
-            return "nya∼"
-        case 4:
-            return ":'3"
-        case 5:
-            return "<3"
+def asciiEmoji(react):
+    with open("src/data/emojis.json", encoding='utf-8') as file:
+        data = json.load(file)
+    data1 = list(data[react])
+    return data1[random.randint(0, len(data1) - 1)]
         
 def getReaction(react):
-    resp = requests.get(f'https://api.otakugifs.xyz/gif?reaction={react}')
-    data = json.loads(resp.text)
+    if react != "kill" or react != "airkiss" or react != "angrystare":
+        resp = requests.get(f'https://api.waifu.pics/sfw/{react}')
+        data = json.loads(resp.text)
+        return data["url"]
+    else:
+        resp = requests.get(f'https://api.otakugifs.xyz/gif?reaction={react}')
+        data = json.loads(resp.text)
+        return data["url"]
 
-    return data["url"]
+def categories():
+    with open("src/data/category.json") as file:
+        data: dict = json.load(file)
+
+    data1 = list(data["Actions"].keys())
+    return {lista:lista for (lista, lista) in zip(data1, data1)}
+
+def text(user: str, user1: str, cat: str):
+    with open("src/data/category.json", encoding='utf-8') as file:
+        data: dict = json.load(file)
+
+    lista = list(data["Actions"][cat])
+
+    listaF: str = lista[random.randint(0, len(lista) - 1)]
+
+    #Replace names of users
+    listaF = listaF.replace("{NAME}", user)
+    listaF = listaF.replace("{NAME1}", user1)
+
+    #Replace emojis
+    with open("src/data/emojis.json", encoding='utf-8') as file:
+        dataE: dict = json.load(file)
+    dataList = list(dataE.keys())
+
+    for x in dataList:
+        y = "{" + x + "}"
+        listaF = listaF.replace(y, asciiEmoji(x))
+
+    return listaF
 
 class Actions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @nextcord.slash_command(description='Dale un beso a alguien')
-    async def kiss(self, interaction: nextcord.Interaction, member: nextcord.Member):
+    @nextcord.slash_command(description='Quieres hacer algo?? Hazlo con este comando!! ;)', guild_ids=[int(GUILD)])
+    async def action(self, interaction: nextcord.Interaction, member: nextcord.Member, categoria: str = nextcord.SlashOption(description="Qué acción harás?", choices= categories(), required= True, name="categoria")):
 
         user, user1 = apodo(interaction=interaction, member=member)
-        embed = nextcord.Embed(description=f'**{user}** le dio un beso a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
-        embed.set_image(url=getReaction('kiss'))
+        embed = nextcord.Embed(color=interaction.user.colour, description=text(user=user, user1=user1, cat=categoria))
+        embed.set_image(url=getReaction(categoria))
         
-        await interaction.response.send_message(embed=embed)
-
-    @nextcord.slash_command(guild_ids=GUILD,description='Dale un abacho a alguien :3')
-    async def hug(self, interaction: nextcord.Interaction, member: nextcord.Member):
-
-        user, user1 = apodo(interaction=interaction, member=member)
-        embed = nextcord.Embed(description=f'**{user}** le dio un abachito a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
-        embed.set_image(url=getReaction('hug'))
-
-        await interaction.response.send_message(embed=embed)
-
-    @nextcord.slash_command(guild_ids=GUILD,description='Acaricia a alguien ')
-    async def nuzzle(self, interaction: nextcord.Interaction, member: nextcord.Member):
-
-        user, user1 = apodo(interaction=interaction, member=member)
-        embed = nextcord.Embed(description=f'**{user}** acaricia suavemente **{user1}** {asciiEmoji()}', color=interaction.user.colour)
-        embed.set_image(url=getReaction('nuzzle'))
-
-        await interaction.response.send_message(embed=embed)
-
-    @nextcord.slash_command(description='Mira fijamente a alguien')
-    async def stare(self, interaction: nextcord.Interaction, member: nextcord.Member):
-
-        user, user1 = apodo(interaction=interaction, member=member)
-        embed = nextcord.Embed(description=f'**{user}** mira fijamente a **{user1}** {asciiEmoji()}', color=interaction.user.colour)
-        embed.set_image(url=getReaction('stare'))
-
         await interaction.response.send_message(embed=embed)
 
 def setup(bot):
