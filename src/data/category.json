@@ -1,5 +1,25 @@
 {
     "Actions": {
+        "airkiss": ["{NAME} le dio un beso de aire a {NAME1}"],
+        "angrystare": ["{NAME} mira enojado a {NAME1}"],
+        "bite": ["{NAME} mordió a {NAME1}"],
+        "cuddle": ["{NAME} se acurrucó con {NAME1} {EH}"],
+        "facepalm": ["{NAME} le da palmadas a {NAME1} {EH}"],
+        "handhold": ["{NAME} toma a {NAME1} de la mano {EH}"],
+        "headbang": ["{NAME} le pegó a {NAME1} en la cabeza!! {EA}"],
+        "hug": ["{NAME} le dio un abacho a {NAME1} {EH}"],
+        "kiss": ["{NAME} le dio un beso amoroso a {NAME1} {EH}", "{NAME} fue besuqueado por {NAME1} {EH}"],
+        "lick": ["{NAME} lame a {NAME1} {EH}"],
+        "pat": ["Pat pat {NAME1}!!"],
+        "punch": ["{NAME} le pega a {NAME1} {EA}"],
+        "run": ["{NAME} sale corriendo de {NAME1} {ES}"],
+        "shout": ["{NAME} le dio un disparo a {NAME1} {EB}"],
+        "slap": ["{NAME le pegó a {NAME1} {EB}"],
+        "sleep": ["{NAME} duerme con {NAME1} {EH}"],
+        "slowclap": ["{NAME} le aplaude lentamente a {NAME1}..."],
+        "stare": ["{NAME} fija la mirada en {NAME1} {EH}"],
+        "wink": ["WINK! {NAME1}"],
+        "kill": ["{NAME} mató sin piedad a {NAME1} {EA}"]
 
     },
 
@@ -14,10 +34,10 @@
         "happy": ["**{NAME}** está feliz! {ET}", "**{NAME}** se siente alegre {ET}"],
         "laugh": ["**{NAME}** ríe a carcajadas! {ET}"], 
         "love": ["**{NAME}** se enamoró {EH}"], 
-        "nom": ["ñam ñam **{NAME}**"],
+        "nom": ["ñam ñam **{NAME}**", "Yummi **{NAME}** {EH}"],
         "nyah": ["**{NAME}** nyah~"],
         "poke": ["POKE!! **{NAME}**", "**{NAME}** {EA}"],
-        "sad": ["**{NAME}** está triste{EB}"],
+        "sad": ["**{NAME}** está triste{EB}", "Dejen solo a {NAME}, está triste{EB}"],
         "scared": ["**{NAME}** está asustado!! {ES}"],
         "shy": ["**{NAME}** se siente tímido {EH}"],
         "smile": ["**{NAME}** está sonriendo {ET}"],
