@@ -39,24 +39,26 @@ def categorias():
 def text(cat, interaction: nextcord.Interaction):
     with open("src/data/category.json", encoding='utf-8') as file:
         data = json.load(file)
-#Get the file in the corresponsive CATegory
+
+    #Get the file in the corresponsive CATegory
     msg = list(data["Emotions"][cat])
 
-    msgFixed = []
+    msgF: str = msg[random.randint(0, len(msg) - 1)]
 
-    for i in msg:
-        temp = i.replace("{EH}", emoji("EH"))
-        temp = temp.replace("{EB}", emoji("EB"))
-        temp = temp.replace("{EC}", emoji("EC"))
-        temp = temp.replace("{ET}", emoji("ET"))
-        temp = temp.replace("{EW}", emoji("EW"))
-        temp = temp.replace("{EA}", emoji("EA"))
-        temp = temp.replace("{ES}", emoji("ES"))
-        temp = temp.replace("{NAME}", getName(interaction=interaction))
-        msgFixed.append(temp)
+    msgF = msgF.replace("{NAME}", getName(interaction=interaction))
 
-    return msgFixed[random.randint(0, len(msg) - 1)]
- 
+    with open("src/data/emojis.json", encoding='utf-8') as file:
+        dataE = json.load(file)
+
+    fixedDataE = list(dataE.keys())
+
+    for x in fixedDataE:
+        y = "{" + x + "}"
+        msgF = msgF.replace(y, emoji(x))
+
+    return msgF
+
+
 class Emotions(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
