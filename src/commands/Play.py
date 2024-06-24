@@ -30,11 +30,11 @@ class Play(commands.Cog):
     @nextcord.slash_command(description='Reproduce musica con esto!!')
     async def play(self, interaction: nextcord.Interaction, name: str, vc: nextcord.VoiceChannel):
         if vc is None:
-            await interaction.send(content="Give me a valid vc!!")
+            await interaction.response.send_message(content="Give me a valid vc!!")
 
         voiceChat = await vc.connect()
 
-        await interaction.send(content=f"Playing {search(name=name, vc=voiceChat)} on {vc.name}")
+        await interaction.response.send_message(content=f"Playing {search(name=name, vc=voiceChat)} on {vc.name}")
 
 def setup(bot):
     bot.add_cog(Play(bot=bot))
